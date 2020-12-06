@@ -1,0 +1,63 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  My Restaurant - Profile
+{% endblock %}
+
+{% block body %}
+
+    <!-- ***** Menu Area Starts ***** -->
+    <section class="section" id="dashboard">
+        <div class="container">
+          <div class="heading">
+              <div class="section-heading text-center">
+                  <h2>Restaurant Profile</h2>
+              </div>
+          </div>
+
+          {% if messages %}
+          <div class="col-md-12">
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          <form class="user-update" action="" enctype="multipart/form-data" method="post">
+            <div class="row">
+                <div class="col-md-4">
+                  <div class="img-profile">
+                    <div class="img">
+                      <img src="{% static 'images/restaurant.png' %}" alt="Default User Image" width="100%">
+                    </div>
+                    <div class="btn-control">
+                      <input type="file" class="text-success" name="user_image" />
+                      <a href="#" class="text-danger">Delete</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  {% csrf_token %}
+                  {{ rest_form.as_ul }}
+                    <div class="form-group row">
+                      <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+          </form>
+        </div>
+
+    </section>
+    <!-- ***** Menu Area Ends ***** -->
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  Menu
+{% endblock %}
+
+{% block body %}
+  <!-- ***** Menu Area Starts ***** -->
+  <section class="section" id="menu">
+      <div class="container">
+
+        <div class="heading">
+          <div class="add-button">
+            <a href="{% url 'add_product' %}" help="Add a new Produect" class="btn btn-danger"><i class="fa fa-plus"></i></a>
+          </div>
+          <div class="back-btn">
+            <a href="{{request.META.HTTP_REFERER|escape}}"><i class="fas fa-arrow-left"></i></a>
+          </div>
+            <div class="section-heading text-center">
+                <h2>Menu</h2>
+            </div>
+
+            <div class="search-form">
+                <form id="search" action="" method="post">
+                  <div class="form-group">
+                        <input name="search" type="text" id="search" placeholder="Search.." required="">
+                        <div class="search-icon">
+                          <button class="btn btn-default" type="button" name="button">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            {% for x in products %}
+              <div class="col-md-3">
+                <a href="{% url 'product' x.id %}">
+                  <div class="item">
+                      <div class='card card1' {% if x.image %} style="background-image: url({{ x.image }});" {% endif %}>
+                          <div class="price"><h6>${{x.price}}</h6></div>
+                          <div class='info'>
+                            <h1 class='title'>{{x.name}}</h1>
+                            <p class='description'>{{x.desc}}</p>
+                            <div class="main-text-button">
+                                <div class="scroll-to-section"><a href="#reservation">{{x.name}} <i class="fa fa-angle-down"></i></a></div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+
+
+              </div>
+          </div>
+
+
+
+  </section>
+  <!-- ***** Menu Area Ends ***** -->
+
+
+{% endblock %}

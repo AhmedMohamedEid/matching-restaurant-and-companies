@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Restaurant - {% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="icon" href="{% static 'images/pizza_icon.png' %}"> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" >
+
+    <link rel="stylesheet" href="{% static 'css/templatemo-klassy-cafe.css' %}">
+
+    <!-- <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}"> -->
+
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+  <body>
+    {% if request.resolver_match.url_name != "joinas" and request.resolver_match.url_name != "signin" and request.resolver_match.url_name != "signup" and request.resolver_match.url_name != "add_restaurant" and request.resolver_match.url_name != "add_company" %}
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="{% static 'images/klassy-logo.png' %}" align="klassy cafe html template">
+                        </a>
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{% url 'index' %}" {% if request.resolver_match.url_name == "index" %} class="active" {% endif %}>Home</a></li>
+                            <li><a href="{% url 'menu' %}" {% if request.resolver_match.url_name == "menu" %} class="active" {% endif %}>Menu</a></li>
+                            <li><a href="{% url 'order' %}" {% if request.resolver_match.url_name == "order" %} class="active" {% endif %}>Orders</a></li>
+                            {% if request.user.profile.is_rest_staff == True %}
+                            <li><a href="{% url 'companies' %}" {% if request.resolver_match.url_name == "companies" %} class="active" {% endif %}>companies</a></li>
+                            {% endif %}
+                            {% if request.user.profile.is_comp_staff == True %}
+                            <li><a href="{% url 'order_rest' %}" {% if request.resolver_match.url_name == "order_rest" %} class="active" {% endif %}>Restaurants</a></li>
+                            {% endif %}
+                            <li class="submenu">
+                                <a href="javascript:;"><i class="fas fa-envelope"></i> {{ user.username|upper }}</a>
+                                <ul>
+                                  <li><a href="{% url 'user_profile' %}">My Profile</a></li>
+                                  {% if request.user.profile.is_rest_staff == True %}
+                                    <li><a href="{% url 'restaurant_profile'%}">Restaurant</a></li>
+                                  {% endif %}
+                                  {% if request.user.profile.is_comp_staff == True %}
+                                    <li><a href="{% url 'restaurant_profile'%}">Company</a></li>
+                                  {% endif %}
+                                    <li><a href="{% url 'logout_page' %}">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+  {% endif %}
+
+        {% block body %}
+
+        {% endblock %}
+
+      <!-- jQuery -->
+      <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+
+      <!-- Bootstrap -->
+      <!-- <script src="{% static 'js/popper.js' %}"></script> -->
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+      <!-- Global Init -->
+      <script src="{% static 'js/all.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script>
+
+          $(function() {
+              var selectedClass = "";
+              $("p").click(function(){
+              selectedClass = $(this).attr("data-rel");
+              $("#portfolio").fadeTo(50, 0.1);
+                  $("#portfolio div").not("."+selectedClass).fadeOut();
+              setTimeout(function() {
+                $("."+selectedClass).fadeIn();
+                $("#portfolio").fadeTo(50, 1);
+              }, 500);
+
+              });
+          });
+
+      </script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,76 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block body %}
+
+    <!-- ***** Menu Area Starts ***** -->
+    <section class="section" id="dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                  <a href="{% url 'menu' %}">
+                      <div class="dash-card">
+                          <i class="fas fa-clipboard-list fa-lg"></i>
+                          <h4>MENU</h4>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-lg-3">
+                  <a href="{% url 'order' %}">
+                      <div class="dash-card notification">
+                        <div class="notification-label">
+                          <span>50</span>
+                        </div>
+                          <i class="fa fa-utensils fa-lg"></i>
+                          <h4>ORDER</h4>
+                      </div>
+                  </a>
+              </div>
+              {% if request.user.profile.is_rest_staff == True %}
+              <div class="col-lg-3">
+                  <a href="{% url 'companies' %}">
+                      <div class="dash-card">
+                          <i class="far fa-building fa-lg"></i>
+                          <h4>COMPANIES</h4>
+                      </div>
+                  </a>
+              </div>
+              {% endif %}
+              {% if request.user.profile.is_comp_staff == True %}
+              <div class="col-lg-3">
+                  <a href="{% url 'companies' %}">
+                      <div class="dash-card">
+                          <i class="far fa-building fa-lg"></i>
+                          <h4>RESTAURANTS</h4>
+                      </div>
+                  </a>
+              </div>
+              {% endif %}
+              <div class="col-lg-3">
+                  <a href="{% url 'users' %}">
+                      <div class="dash-card">
+                          <i class="fa fa-users fa-lg"></i>
+                          <h4>USERS</h4>
+                      </div>
+                  </a>
+              </div>
+              <div class="col-lg-3">
+                  <a href="{% url 'restaurant_profile' %}">
+                      <div class="dash-card">
+                          <i class="fas fa-cog fa-lg"></i>
+                          <h4>SETTINGS</h4>
+                      </div>
+                  </a>
+              </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- ***** Menu Area Ends ***** -->
+
+
+{% endblock %}

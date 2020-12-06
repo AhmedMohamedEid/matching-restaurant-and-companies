@@ -1,0 +1,286 @@
+#reservation{
+  margin-top: 0;
+  padding: 50px 0;
+  /* margin: auto; */
+}
+#reservation .campany_card, #reservation .restaurant_card{
+  padding: 20px
+}
+
+#reservation .campany_card ,#reservation .restaurant_card  {
+  font-size: 4em;
+}
+#reservation .logo {
+  padding: 20px;
+}
+
+/* home */
+#dashboard , #menu{
+    margin-top: 100px;
+    background-color: #fffafa;
+    padding: 80px 0px;
+    position: relative;
+}
+
+#dashboard .dash-card {
+  background-color: #fff;
+  padding: 23px;
+  text-align: center;
+  font-size: 2em;
+  border: 1px solid #fb5849;
+  color: #fb5849;
+  margin-top: 25px;
+}
+#dashboard .dash-card h4 {
+  color: #000
+}
+
+#dashboard .notification {
+  position: relative;
+}
+#dashboard .notification .notification-label {
+  border-radius: 50%;
+  border: 1px solid;
+  padding: .5em .5em;
+  display: inline-flex;
+  font-size: 16px;
+  position: absolute;
+  top: -22px;
+  right: 30px;
+  background-color: #ffced2;
+}
+
+#menu .section-heading {
+    margin-bottom: 40px;
+}
+
+#menu .heading , #dashboard .heading{
+  position: relative;
+}
+#menu .add-button , #dashboard .add-button {
+  position: absolute;
+  top: -48px;
+  right: 12px;
+}
+
+#menu .add-button a ,#dashboard .add-button a{
+  border-radius: 50%
+}
+#menu .back-btn ,#dashboard .back-btn{
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  font-size: 25px;
+}
+#menu .back-btn a, #dashboard .back-btn a {
+  color:  #fb5849;
+}
+.heading h2{
+  border-bottom: 3px solid #fb5849;
+  display: inline;
+}
+#search {
+
+  margin: .5em;
+  padding: .4em;
+}
+#search input {
+  width: 100%
+}
+#search .form-group {
+  width: 70%;
+  margin: 1rem auto;
+  position: relative;
+}
+#search .search-icon{
+  position: absolute;
+  top: 9px;
+  right: 0;
+
+}
+#search .search-icon button{
+  color: #fb5849;
+}
+
+.menu-item-carousel{
+  width: 100%
+}
+.card{
+  margin: 0 auto;
+  max-width: 100%;
+  min-height: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+#menu .price h6 {
+    position: absolute;
+    width: 23%;
+    height: 22%;
+    background-color: #fb5849;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.info .title {
+    margin: 0;
+    padding: 20px 20px 10px 30px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.item {
+  margin-bottom: 25px;
+}
+
+
+
+
+#reviewer {
+  padding: 1rem;
+}
+
+		/*
+		 * Rating styles
+		 */
+ .rate {
+   display: inline-block;
+   position: relative;
+   height: 46px;
+   padding: 0 10px;
+ }
+ .rate:not(:checked) > input {
+     position:absolute;
+     top:-9999px;
+     left: 0
+ }
+ .rate:not(:checked) > label {
+     float:right;
+     width:1em;
+     overflow:hidden;
+     white-space:nowrap;
+     cursor:pointer;
+     font-size:30px;
+     color:#ccc;
+     left: 0
+ }
+ .rate:not(:checked) > label:before {
+     content: '★ ';
+ }
+ .rate > input:checked ~ label {
+     color: #ffc700;
+ }
+ .rate:not(:checked) > label:hover,
+ .rate:not(:checked) > label:hover ~ label {
+     color: #deb217;
+ }
+ .rate > input:checked + label:hover,
+ .rate > input:checked + label:hover ~ label,
+ .rate > input:checked ~ label:hover,
+ .rate > input:checked ~ label:hover ~ label,
+ .rate > label:hover ~ input:checked ~ label {
+     color: #c59b08;
+ }
+
+
+
+.reviewer {
+  margin-bottom: 30px;
+  padding: 30px 0;
+}
+.reviewer-form textarea{
+  padding: 10px;
+}
+.reviewer h3{
+  margin-left: 15px;
+  margin-bottom: 20px;
+
+}
+.media{
+  background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important;
+    padding: 25px;
+    margin: 15px 0;
+}
+
+
+.companies-label, .company-history, .user-update{
+  margin-top: 30px;
+}
+
+
+#dashboard a div.active{
+  background-color: #f4433617;
+}
+table {
+    border-bottom: 2px solid #fb5849;
+}
+
+
+#dashboard .heading .logo{
+  margin-bottom: 2em;
+}
+#dashboard .heading .logo a{
+  font-size: 60px;
+  margin: 25px;
+  border: 2px solid;
+  color: #fb5849;
+  padding: 1rem 1.9rem;
+  border-radius: 50%;
+}
+
+.btn-color {
+  background-color: #fb5849;
+  border-color: #fb5849;
+}
+
+.footer .link a{
+  padding: 10px;
+  margin-right: 15px;
+}
+
+.form{
+  padding: 5px 30px 20px 30px !important;
+}
+#reservation .form-check {
+  display: inline;
+
+}
+
+input[type=radio]{
+  appearance: auto;
+  font-size: 15px;
+  width: auto;
+  height: auto;
+}
+
+#dashboard .companies-label .dash-card {
+  background-color: #fff;
+  padding: 7px;
+  text-align: center;
+  font-size: 1em;
+  border: 1px solid #fb5849;
+  color: #fb5849;
+}
+#dashboard .companies-label .dash-card  h6{
+  color: #000;
+  display: inline;
+}
+.custome-label{
+  display: inline;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid;
+  padding: 8px 10px;
+  position: absolute;
+  top: -1px;
+  right: -23px;
+  z-index: 9000;
+  background: #fff;
+}

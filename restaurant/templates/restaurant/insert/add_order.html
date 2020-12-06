@@ -1,0 +1,92 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  Request Order
+{% endblock %}
+
+{% block body %}
+
+<section class="section" id="menu">
+    <div class="container">
+
+      <div class="heading">
+        <div class="back-btn">
+          <a href="{{request.META.HTTP_REFERER|escape}}"><i class="fas fa-arrow-left"></i></a>
+        </div>
+          <div class="section-heading text-center">
+              <h2>Request Order</h2>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <!-- {% csrf_token %}
+          {{ product_form.as_ul }} -->
+
+        </div>
+        <div class="col-md-6">
+          <div class="contact-form">
+              <form id="contact" action="{% url 'add_order' %}" enctype="multipart/form-data" method="post">
+                <div class="row">
+                  {% csrf_token %}
+                  {{ order_form.as_ul }}
+
+                  <!-- <div class="col-sm-12">
+                    <fieldset>
+                      <input name="name" type="text" id="name" placeholder="Product Name*" required="">
+                    </fieldset>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <fieldset>
+                      <input name="price" type="text" id="price" placeholder="Price*" required="">
+                    </fieldset>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <fieldset>
+                      <input name="calories" type="text" id="calories" placeholder="Calories" required="">
+                    </fieldset>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <fieldset>
+                      <input name="fats" type="text" id="fats" placeholder="Fats" required="">
+                    </fieldset>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <fieldset>
+                      <input name="image" type="file" id="image" required="">
+                    </fieldset>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <fieldset>
+                      <textarea name="desc" id="desc" placeholder="Product Description" rows="3" cols="50"></textarea>
+                    </fieldset>
+                  </div> -->
+
+                  <div class="col-sm-6">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="main-button-icon">Add</button>
+                    </fieldset>
+                  </div>
+                  <div class="col-sm-6">
+                    <fieldset>
+                      <a href="{{request.META.HTTP_REFERER|escape}}" id="form-submit" class="main-button-icon">Back</a>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+
+
+</section>
+
+{% endblock %}

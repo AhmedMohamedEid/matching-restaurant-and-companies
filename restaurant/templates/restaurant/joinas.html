@@ -1,0 +1,95 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  Sign up in
+{% endblock %}
+
+{% block body %}
+
+<!-- ***** Reservation Us Area Starts ***** -->
+<section class="section" id="reservation" style="margin-top:0; padding-top: 36px;">
+    <div class="container">
+        <div class="row">
+           <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="contact-form">
+                    <form id="contact" class="form" action="{% url 'joinas' '{{from}}' %}" method="post">
+                      <div class="logo text-center">
+                        <a href="index.html" class="logo">
+                            <img src="{% static 'images/klassy-logo.png' %}" align="klassy cafe html template">
+                        </a>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                            <h5>Join As</h5>
+                            {% if from %}
+                              <h4>{{ from|upper}}</h4>
+                              {% endif %}
+                        </div>
+                        {% csrf_token %}
+                        <input type="hidden" name="from_join" value="1">
+                        <input type="hidden" name="type" value="{{from}}">
+                        <div class="col-sm-12">
+                          <fieldset>
+
+                              {% if companies %}
+                              <select class="form-control" name="company">
+                                <option value="0">Please Select</option>
+                                {% for comp in companies %}
+                                  <option value="{{ comp.id }}">{{ comp.name }}</option>
+                                {% endfor %}
+                                </select>
+                              {% endif %}
+                              {% if restaurant %}
+                              <select class="form-control" name="restaurant">
+                                <option value="0">Please Select</option>
+                                {% for rest in restaurant %}
+                                  <option value="{{ rest.id }}">{{ rest.name }}</option>
+                                {% endfor %}
+                                </select>
+                              {% endif %}
+
+                          </fieldset>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                          <fieldset>
+                            <button type="submit" id="form-submit" class="main-button-icon">Join <i class="fa fa-arrow-right fa-lg"></i></button>
+                          </fieldset>
+                        </div>
+                        {% if restaurant %}
+                        <div class="col-sm-12 mt-2">
+                            <span>AS</span>
+                            <a href="{% url 'joinas' 'company' %}" class="text-info">Company</a>
+                        </div>
+                        {% endif %}
+                        {% if companies %}
+                        <div class="col-sm-12 mt-2">
+                            <span>AS</span>
+                            <a href="{% url 'joinas' 'restaurant' %}" class="text-info">Restaurant</a>
+                        </div>
+                        {% endif %}
+
+                        <div class="col-sm-12 mt-2">
+                            <span>Already have login and password?</span>
+                            <a href="{% url 'signin' %}" class="text-info">Sign in</a>
+                        </div>
+
+                        <div class="col-sm-12 mt-2">
+                            <span>Register </span>
+                            <a href="{% url 'add_company' %}" class="text-sm text-info">Company</a> Or
+                            <a href="{% url 'add_restaurant' %}" class="text-info">Restaurant</a>
+                        </div>
+                      </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Reservation Area Ends ***** -->
+
+{% endblock %}

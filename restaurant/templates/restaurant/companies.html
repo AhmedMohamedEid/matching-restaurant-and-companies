@@ -1,0 +1,97 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  Companies
+{% endblock %}
+
+{% block body %}
+
+    <!-- ***** Menu Area Starts ***** -->
+    <section class="section" id="dashboard">
+        <div class="container">
+
+          <div class="heading">
+
+            <div class="back-btn">
+              <a href="{{request.META.HTTP_REFERER|escape}}"><i class="fas fa-arrow-left"></i></a>
+            </div>
+              <div class="section-heading text-center">
+                  <h2>COMPANIES</h2>
+              </div>
+          </div>
+
+          <div class="companies-label">
+            <div class="row">
+              {% for comp in comp_list %}
+              <div class="col-lg-2">
+                  <a href="{% url 'all_company' comp.id %}">
+                      <div class="dash-card notification">
+                          <i class="far fa-building fa-lg"></i>
+                          <h6>{{comp.name}}</h6>
+                      </div>
+                  </a>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+
+        <div class="company-history">
+
+          {% if request.resolver_match.url_name == "order_company" %}
+          <div class="col-md-12">
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Emp Name</th>
+                      <th scope="col">Product</th>
+                      <th scope="col">QTY</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">State</th>
+                      <th scope="col">Control</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for order in order_list %}
+                    {% if order.restaurant_id == request.user.profile.restaurant_id  %}
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>{{order.user_id |title}}</td>
+                      <td>{{order.product_id}}</td>
+                      <td>{{order.qty}}</td>
+                      <td>{{order.order_date}}</td>
+                      <td>{{order.get_state_display}}</td>
+                      <td class="text-center">
+                        {% if order.get_state_display == 'Request' %}
+                        <a href="#" title="Request Order" class=" text-worming"><i class="fas fa-clipboard"></i></a>
+                        {% endif %}
+                        {% if order.get_state_display == 'Preparing' %}
+                        <a href="#" class="text-success" title="Preparing Order" ><i class="fas fa-hourglass-half"></i></a>
+                        {% endif %}
+                        {% if order.state == 'Received' %}
+                        <a href="#" class=" text-success" title="This is Order Received"><i class="far fa-check-circle"></i></a>
+                        {% endif %}
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </section>
+    <!-- ***** Menu Area Ends ***** -->
+
+
+{% endblock %}

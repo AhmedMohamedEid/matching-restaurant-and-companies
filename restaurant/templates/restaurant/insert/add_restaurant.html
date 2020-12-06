@@ -1,0 +1,112 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  New Restaurant
+{% endblock %}
+
+{% block body %}
+
+    <!-- ***** Menu Area Starts ***** -->
+    <section class="section" id="dashboard" style="margin-top:0; padding-top: 36px;">
+        <div class="container">
+          <div class="heading">
+            <div class="logo text-center">
+              <a href="#" class="logo">
+                  <i class="fas fa-utensils fa-lg"></i>
+              </a>
+            </div>
+              <div class="section-heading text-center">
+                  <h2>New Restaurant</h2>
+              </div>
+          </div>
+          {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+
+
+          <form class="user-update" action="{% url 'add_restaurant' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group row">
+                      <label for="name" class="col-sm-2 col-form-label-sm">Name </label>
+                      <div class="col-sm-10">
+                        <input type="text" name="name" class="form-control form-control-sm" id="name">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="phone" class="col-sm-2 col-form-label-sm">phone</label>
+                      <div class="col-sm-10">
+                        <input type="phone" name="phone" class="form-control form-control-sm" id="phone">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="address" class="col-sm-2 col-form-label-sm">Address</label>
+                      <div class="col-sm-10">
+                        <input type="text"name="address" class="form-control form-control-sm" id="address">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="Capacity" class="col-sm-2 col-form-label-sm">Capacity</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="capacity" class="form-control form-control-sm" id="capacity">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="description" class="col-sm-2 col-form-label-sm">Description</label>
+                      <div class="col-sm-10">
+                        <!-- <input type="text" class="form-control form-control-sm" id="description"> -->
+                        <textarea name="description" class="form-control form-control-sm" id="description" rows="5" cols="80"></textarea>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                      <div class="col-sm-10 text-center">
+                        <button type="submit" class="btn-color btn btn-danger btn-sm">Create</button>
+                        <a href="{{request.META.HTTP_REFERER|escape}}" class="btn btn-info btn-sm">Back</a>
+                      </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+          </form>
+          <div class="footer text-center pt-15">
+            <div class="link">
+              <span>Don't have an account yet?</span>
+              <a href="{% url 'signup' %}" class="text-info">Sign Up</a>
+            </div>
+
+            <div class="link">
+              <span>Already have login and password?</span>
+              <a href="{% url 'signin' %}" class="text-info">Sign in</a>
+            </div>
+            <div class="link">
+                <span>Register as </span>
+                <a href="{% url 'add_company' %}" class="text-info">Company</a>
+            </div>
+
+          </div>
+        </div>
+
+    </section>
+    <!-- ***** Menu Area Ends ***** -->
+
+
+{% endblock %}

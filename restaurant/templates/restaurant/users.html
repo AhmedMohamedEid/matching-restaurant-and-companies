@@ -1,0 +1,76 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+  Users
+{% endblock %}
+
+{% block body %}
+
+    <!-- ***** Menu Area Starts ***** -->
+    <section class="section" id="dashboard">
+        <div class="container">
+
+          <div class="heading">
+
+            <div class="back-btn">
+              <a href="{{request.META.HTTP_REFERER|escape}}"><i class="fas fa-arrow-left"></i></a>
+            </div>
+              <div class="section-heading text-center">
+                  <h2>USERS</h2>
+              </div>
+          </div>
+
+
+
+        <div class="users-table">
+          <div class="users">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Job</th>
+                  <th scope="col">Account Type</th>
+                  <th scope="col">Control</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Ahmed Eid</td>
+                  <td>ahmedmohamed@gmail.com</td>
+                  <td>01012650056</td>
+                  <td>Owner</td>
+                  <td>Admin</td>
+                  <td>
+                    <a href="#" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Ali Mohamed</td>
+                  <td>ahmedmohamed@gmail.com</td>
+                  <td>01012650056</td>
+                  <td>Owner</td>
+                  <td>Admin</td>
+                  <td>
+                    <a href="#" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- ***** Menu Area Ends ***** -->
+
+
+{% endblock %}
